@@ -5,7 +5,7 @@ services:
     ports:
       - "8282:80/tcp"
     environment:
-      TZ: 'America/Toronto'
+      TZ: 'America/New_York'
     # Volumes store your data between container upgrades
     volumes:
       - './db:/var/www/html/db'
