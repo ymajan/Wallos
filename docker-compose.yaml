@@ -1,13 +1,21 @@
 services:
   wallos:
-    container_name: wallos
     image: bellamy/wallos:latest
+    container_name: wallos
     environment:
-      TZ: 'America/New_York'
+      TZ: America/New_York
     volumes:
       - wallos-db:/var/www/html/db
       - wallos-logos:/var/www/html/images/uploads/logos
     restart: unless-stopped
+    
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fs http://localhost | grep -q '<title>Wallos'"]
+      interval: 30s      # how often to probe
+      timeout: 5s
+      retries: 3
+      start_period: 40s  # give Wallos time to boot
+
 
 volumes:
   wallos-db:
