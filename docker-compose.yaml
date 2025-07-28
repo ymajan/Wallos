@@ -10,7 +10,7 @@ services:
     restart: unless-stopped
     
     healthcheck:
-      test: ["CMD-SHELL", "curl -fs http://localhost | grep -q '<title>Wallos'"]
+      test: ["CMD-SHELL", "curl -fs https://wallos.psimatic.io | grep -q '<title>Wallos'"]
       interval: 30s      # how often to probe
       timeout: 5s
       retries: 3
